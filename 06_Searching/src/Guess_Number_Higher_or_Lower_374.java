@@ -17,4 +17,9 @@ public class Guess_Number_Higher_or_Lower_374 {
 
         return end;
     }
+
+    // temp delete when you run
+    public int guess(int mid) {
+        return 0;
+    }
 }
