@@ -17,7 +17,7 @@ public class Two_Sum_II_Input_Array_Is_Sorted_167 {
             if (temp < 0) {
                 continue;
             } else {
-                return new int[] {i,temp};
+                return new int[] {i+1,temp+1};
             }
 
         }
@@ -30,9 +30,9 @@ public class Two_Sum_II_Input_Array_Is_Sorted_167 {
 
             int mid = start + ((end-start)/2);
 
-            if ((arr[mid]+i) == target) {
-                return arr[mid];
-            } else if ((arr[mid]+i) >= target){
+            if ((arr[mid]+arr[i]) == target) {
+                return mid;
+            } else if ((arr[mid]+arr[i]) >= target){
                 end = mid - 1;
             } else {
                 start = mid + 1;
@@ -40,5 +40,21 @@ public class Two_Sum_II_Input_Array_Is_Sorted_167 {
         }
 
         return -1;
+    }
+    public int[] twoSum_M2(int[] numbers, int target) {
+        int start = 0;
+        int end = numbers.length-1;
+
+        while (start <= end) {
+            if (numbers[start]+numbers[end] == target) {
+                return new int[] {start+1, end+1};
+            } else if (numbers[start]+numbers[end] > target) {
+                end--;
+            } else {
+                start++;
+            }
+        }
+
+        return new int[] {-1,-1};
     }
 }
