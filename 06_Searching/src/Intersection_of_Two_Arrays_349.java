@@ -53,6 +53,37 @@ public class Intersection_of_Two_Arrays_349 {
         return false;
     }
 
+    public int[] intersection2(int[] nums1, int[] nums2) {
+        if (nums1.length > nums2.length) {
+            intersection(nums2,nums1);
+        }
+
+        int[] mapping = new int [1010];
+
+        for (int num : nums1) {
+            mapping[num]++;
+        }
+
+        List<Integer> ansList = new ArrayList();
+
+        int[] mapping2 = new int [1010];
+        
+        for (int num : nums2) {
+            if (mapping[num] > 0 && mapping2[num] == 0) {
+                mapping2[num]++;
+                ansList.add(num);
+            }
+        }
+
+        int[] ans = new int[ansList.size()];
+
+        for (int i = 0; i < ansList.size(); i++) {
+            ans[i] = ansList.get(i);
+        }
+
+        return ans;
+    }
+
     public static void main(String[] args) {
         System.out.println(Arrays.toString(intersection(new int[] {1,2,2,1}, new int[] {2,2})));
         System.out.println(Arrays.toString(intersection(new int[] {4,9,5}, new int[] {9,4,9,8,4})));
