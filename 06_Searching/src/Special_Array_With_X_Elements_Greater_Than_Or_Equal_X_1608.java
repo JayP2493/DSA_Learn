@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class Special_Array_With_X_Elements_Greater_Than_Or_Equal_X_1608 {
-    public int specialArray(int[] nums) {
+    public static int specialArray(int[] nums) {
         Arrays.sort(nums);
 
         int start = 1;
@@ -20,7 +20,7 @@ public class Special_Array_With_X_Elements_Greater_Than_Or_Equal_X_1608 {
         return start;
     }
 
-    public int countBigger (int[] nums, int target) {
+    public static int countBigger (int[] nums, int target) {
         int start = 0;
         int end = nums.length - 1;
 
