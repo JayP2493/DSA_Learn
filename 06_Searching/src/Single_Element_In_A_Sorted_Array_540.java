@@ -3,7 +3,7 @@ public class Single_Element_In_A_Sorted_Array_540 {
         int start = 0;
         int end = nums.length-1;
 
-        while (start <= end) {
+        while (start < end) {
             int mid = start + (end -start) / 2;
 
             if (((mid%2) == 0 && nums[mid] == nums[mid+1]) || ((mid%2) == 1 && nums[mid] == nums[mid-1])) {
