@@ -36,4 +36,8 @@ public class Special_Array_With_X_Elements_Greater_Than_Or_Equal_X_1608 {
 
         return nums.length - end;
     }
+
+    public static void main(String[] args) {
+
+    }
 }
