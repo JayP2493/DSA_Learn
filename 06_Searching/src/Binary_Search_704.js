@@ -10,7 +10,7 @@ const search = function(nums, target) {
     while (start <= end) {
         let mid = Math.floor (start + ((end - start)/2));
 
-        if(nums[mid] == target) {
+        if(nums[mid] === target) {
             return mid;
         } else if (nums[mid] > target) {
             end = mid - 1;
