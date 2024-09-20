@@ -14,6 +14,5 @@ public class Peak_Index_In_Mountain_Array_852 {
         }
 
         return start;
-        //x
     }
 }
