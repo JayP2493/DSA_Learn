@@ -4,7 +4,14 @@
  * @return {number[]}
  */
 const searchRange = function(nums, target) {
-    return [search(nums,target,true),search(nums,target,false)];
+    let ans = [-1,-1];
+    ans[0] = search(nums,target,true);
+
+    if (ans[0] != -1) {
+        ans[1] = ans[1] = search(nums,target,false);
+    }
+
+    return ans;
 };
 
 function search (nums,target,dir) {
