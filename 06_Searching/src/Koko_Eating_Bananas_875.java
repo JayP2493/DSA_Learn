@@ -1,13 +1,10 @@
+import java.util.Arrays;
+
 public class Koko_Eating_Bananas_875 {
     public static int minEatingSpeed(int[] piles, int h) {
 
-        long start = piles[0];
-        long end = 0;
-
-        for (int i = 0; i < piles.length; i++) {
-            start = Math.min(piles[i],start);
-            end += piles[i];
-        }
+        long start = 1;
+        long end = Arrays.stream(piles).max().getAsInt();
 
         long ans = 0;
 
@@ -15,7 +12,7 @@ public class Koko_Eating_Bananas_875 {
             long mid = start + (end-start) / 2;
             long hours = speedCounter (mid,piles);
 
-            if (hours < h) {
+            if (hours <= h) {
                 ans = mid;
                 end = mid - 1;
             } else {
