@@ -2,50 +2,52 @@ import java.util.Arrays;
 
 public class Minimum_Absolute_Sum_Difference_1818 {
     public static int minAbsoluteSumDiff(int[] nums1, int[] nums2) {
-        int[] initialAbsoluteDiff = new int[nums1.length];
-        int initialTotalSum = 0;
+        int mod = 1000000007;
+        int totalSum = 0;
+        int MaxImprovement = 0;
 
-        for (int i = 0; i < initialAbsoluteDiff.length; i++) {
-            initialAbsoluteDiff[i] = Math.abs(nums1[i] - nums2[i]);
-            initialTotalSum += initialAbsoluteDiff[i];
-        }
+        int[] copyNum1 = Arrays.copyOf(nums1,nums1.length);
+        Arrays.sort(copyNum1);
 
-        Arrays.sort(nums1);
+        for (int i = 0; i < nums1.length; i++) {
+            int cDiff = Math.abs(nums1[i] - nums2[i]);
+            totalSum = (totalSum + cDiff) % mod;
 
-        int[] lowestDiff = new int[nums2.length];
-        int maxDiff = 0;
+            int temp = find(copyNum1,nums2[i]);
 
-        for (int i = 0; i < nums2.length; i++) {
-            int temp = lowerBound(nums2[i], nums1);
-            int tempDiff = Math.abs(nums2[i] - temp);
+            if (temp < nums1.length) {
+                int nDiff = Math.abs(copyNum1[temp] - nums2[i]);
+                MaxImprovement = Math.max(MaxImprovement,(cDiff-nDiff));
+            }
 
-            if (tempDiff < initialAbsoluteDiff[i]) {
-                maxDiff = Math.abs(tempDiff-initialAbsoluteDiff[i]);
+            if (temp > 0) {
+                int nDiff = Math.abs(copyNum1[temp-1] - nums2[i]);
+                MaxImprovement = Math.max(MaxImprovement,(cDiff-nDiff));
             }
         }
 
-        return initialTotalSum - maxDiff;
+        return totalSum - MaxImprovement;
     }
 
-    public static int lowerBound (int target, int[] arr) {
+    public static int find (int[] arr, int target) {
         int start = 0;
         int end = arr.length-1;
 
         while (start < end) {
-            int mid = start + (end - start) / 2;
+
+            int mid = start + (end-start)/2;
 
             if (arr[mid] == target) {
-                return arr[mid];
+                return mid;
             } else if (arr[mid] > target) {
                 end = mid;
             } else {
                 start = mid + 1;
             }
+
         }
 
-        int ans = Math.min()
-
-        return arr[end];
+        return end;
     }
 
     public static void main(String[] args) {
