@@ -18,7 +18,7 @@ const findMedianSortedArrays = function(nums1, nums2) {
     let end = m;
 
     while (start <= end) {
-        let mid = Math.floor((start + end)/2);
+        let mid = Math.floor(start + (end-start)/2);
         let mid2 = ansIndex - mid;
 
         let l1 = Number.MIN_SAFE_INTEGER;
@@ -46,6 +46,3 @@ const findMedianSortedArrays = function(nums1, nums2) {
 
     return 0;
 };
-
-
-findMedianSortedArrays([1,3],[2]);
