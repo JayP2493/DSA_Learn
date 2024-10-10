@@ -6,37 +6,38 @@ public class AGGRCOW_Aggressive_cows {
         Arrays.sort(stalls);
 
         int start = 1;
-        int end = stalls [stalls.length - 1];
+        int end = stalls[stalls.length-1] - stalls[0];
+        int ans = 1;
 
-        while (start < end) {
+        while (start <= end) {
             int mid = start + (end-start)/2;
 
-            if (canfit(stalls,k,mid)) {
-                end = mid;
-            } else {
+            if (searching(stalls,k,mid)) {
+                ans = mid;
                 start = mid + 1;
+            } else {
+                end = mid - 1;
             }
         }
 
-        return end;
+        return ans;
     }
 
-    public static boolean canfit (int[] arr, int cows, int psAns) {
-        
-        int lastCow = arr[0];
+    public static boolean searching(int[] stalls, int k, int mid) {
+        int lastPosition = stalls[0];
         int count = 1;
 
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] - lastCow >= psAns) {
-                lastCow = arr[i];
+        for (int i = 1; i < stalls.length; i++) {
+            if ((stalls[i]-lastPosition) >= mid) {
                 count++;
+                lastPosition = stalls[i];
             }
         }
 
-        if (count == cows) {
-            return true;
-        } else {
-            return false;
-        }
+        return count >= k;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(aggressiveCows(new int[] {1, 2, 3}, 2));
     }
 }
