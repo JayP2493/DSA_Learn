@@ -9,18 +9,17 @@ public class AGGRCOW_Aggressive_cows {
         int end = stalls[stalls.length-1] - stalls[0];
         int ans = 1;
 
-        while (start <= end) {
+        while (start < end) {
             int mid = start + (end-start)/2;
 
             if (searching(stalls,k,mid)) {
-                ans = mid;
                 start = mid + 1;
             } else {
-                end = mid - 1;
+                end = mid;
             }
         }
 
-        return ans;
+        return start;
     }
 
     public static boolean searching(int[] stalls, int k, int mid) {
